@@ -86,7 +86,7 @@
 - .append(x)
   - 리스트에 값을 추가함
 - .extend(iterable)
-  - 리스트에 iterable의 항복을 추가함
+  - 리스트에 iterable의 항목을 추가함
   - ![image-20210726100606339](0726_dataStructure.assets/image-20210726100606339.png)
 - .insert(i, x)
   - 리스트 길이보다 큰 i를 입력할 경우 맨뒤에 추가
