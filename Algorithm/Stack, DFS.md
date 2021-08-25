@@ -6,7 +6,7 @@
     - 선형구조: 자료간의 관계가 1대1의 관계를 갖는다.
     - 비선형구조: 자료 간의 관계가 1대N의 관계를 갖는다.(예: 트리)
   - 스택에 자료를 삽입하거나 스택에서 자료를 꺼낼 수 있다.
-  - 마지막에 삽입한 자료를 가장 먼저 꺼낸다. 후입선출(LIFO, Last-In-First-Out)이라고 부른다.
+  - **마지막에 삽입한 자료를 가장 먼저 꺼낸다. 후입선출(LIFO, Last-In-First-Out)이라고 부른다.**
     - 예를 들어 스택에 1, 2, 3 순으로 자료를 삽입한 후 꺼내면 역순으로 즉 3, 2, 1 순으로 꺼낼 수 있다.
 
 
@@ -118,7 +118,7 @@
     - n번 만큼만 연산을 하면 끝난다.
     - 재귀로인한 함수호출의 리소스를 줄일 수 있다.
 
-- memozation을 재귀적 구조에 사용하는 것보다 반복적 구조로 DP를 구현한 것이 성능 면에서 보다 효율적이다.
+- **memozation을 재귀적 구조에 사용하는 것보다 반복적 구조로 DP를 구현한 것이 성능 면에서 보다 효율적이다.**
 
 - 재귀적 구조는 내부에 시스템 호출 스택을 사용하는 오버헤드가 발생하기 때문이다
 
@@ -148,7 +148,29 @@
 
 - ![image-20210818152527114](img/image-20210818152527114.png)
 
+- DFS를 이용한 N Castle 문제 풀이 (재귀)
 
-
+  - ```python
+    def castle(i):
+        global result
+        if i == n:
+            result += 1
+            return
+        for x in range(n):
+            if used[x] == 1:
+                continue
+            Map[i][x] = 1
+            used[x] = 1
+            castle(i+1)
+            Map[i][x] = 0
+            used[x] = 0
+    for test_ in range(1, 11):
+        n = int(input())
+        Map = [[0] * n for _ in range(n)]
+        used = [0] * n
+        result = 0
+        castle(0)
+        print('#{} {}'.format(test_, result))
+    ```
 
 
