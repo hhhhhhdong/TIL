@@ -176,3 +176,37 @@
 
 # BFS
 
+- 너비우선탐색
+
+- 탐색 시작점의 인접한 정점들을 먼저 모두 차례로 방문한 후에, 방문했던 정점을 시작점으로 하여 다시 인접한 정점들을 차례로 방문하는 방식
+
+- 선입선출 형태의 자료구조인 큐를 활용
+
+- ![image-20210825234725553](img/image-20210825234725553.png)
+
+- 구현 코드
+
+  - ```python
+    def queue(s, n):
+        q = []
+        visited = [0] * n
+        q.append(s)
+        visited[s] = 1
+        while q:
+            now = q.pop(0)
+            print(s)
+            for nxt in range(n):
+                if adj[now][nxt] == 1 and visited[nxt] == 0:
+                    q.append(nxt)
+                    visited[nxt] = visited[now] + 1
+    
+    
+    n, m = map(int, input().split())
+    lis = list(map(int, input().split()))
+    adj = [[0] * n for _ in range(n)]
+    for i in range(m):
+        adj[lis[i * 2]][lis[i * 2 + 1]] = 1
+    queue(0, n)
+    ```
+
+  - `visited[nxt] = visited[now] + 1`: 다음 방문할 노드의 `visited`배열에 현재 노드의 값 + 1 을 해줌으로써 `visited`배열이 시작점으로 부터의 최단거리 정보를 갖게된다.
